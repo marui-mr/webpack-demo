@@ -1,23 +1,12 @@
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var path = require("path");
+const base = require("./webpack.config.base.js");
 
 module.exports = {
-  mode: "development",
+  ...base, // 继承base的所有属性
   devtool: "inline-source-map",
   devServer: {
     contentBase: "./dist",
   },
-  entry: "./src/index.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].[contenthash].js",
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "写代码啦",
-      template: "src/assets/index.html",
-    }),
-  ],
+  mode: "development",
   module: {
     rules: [
       {
